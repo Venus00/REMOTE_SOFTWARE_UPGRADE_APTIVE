@@ -1,0 +1,49 @@
+- name: test remote setup
+  hosts: ihm
+  tasks:
+   - name: setup source list file 
+    ansible.builtin.copy:
+      src: /home/aptive/remote_upgrade_project/scripts_files/sources.list
+      dest: /etc/apt/
+      owner: szbaijie
+      group: szbaijie
+      mode: '0644'
+    - name: setup source list file 
+    ansible.builtin.copy:
+      src: /home/aptive/remote_upgrade_project/scripts_files/meta-release
+      dest: /etc/apt/
+      owner: szbaijie
+      group: szbaijie
+      mode: '0644'
+    - name: setup remote upgrade to 20
+      script: /home/aptive/remote_upgrade_project/script_files/bionic_upgrade.sh
+    - name: Reboot machine
+      ansible.builtin.reboot:
+    - name: Remote Upgrade to 20
+      ansible.builtin.shell:
+      cmd: sudo do-release-upgrade --frontend=DistUpgradeViewNonInteractive
+    - name: execute remote upgrade to 22
+      script: /home/aptive/remote_upgrade_project/script_files/focal_upgrade.sh
+      - name: bash script
+   - name: copy tainum cyber security zip file 
+  #   ansible.builtin.copy:
+  #     src: /home/aptive/remote_upgrade_project/scripts_files/security_packages/taniumclient_7.4.10.1075-ubuntu22_arm64.deb
+  #     dest: /home/szbaijie/
+  #     owner: szbaijie
+  #     group: szbaijie
+  #     mode: '0644'
+  #   - name: setup tainum file
+  #  - name: copy falcon cyber security zip file 
+  #   ansible.builtin.copy:
+  #     src: /home/aptive/remote_upgrade_project/scripts_files/security_packages/falcon-sensor_7.15.0-16803_arm64.deb
+  #     dest: /home/szbaijie/
+  #     owner: szbaijie
+  #     group: szbaijie
+  #     mode: '0644'
+  #   - name: setup falcon file
+    # - name: wifi fix
+    #   script: /home/aptive/remote_upgrade_project/script_files/focal_upgrade.sh
+    #   - name: bash script
+    # - name: install cyber security files
+    #   script: /home/aptive/remote_upgrade_project/script_files/focal_upgrade.sh
+    #   - name: bash script  
