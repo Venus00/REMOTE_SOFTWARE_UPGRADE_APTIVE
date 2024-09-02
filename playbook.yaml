@@ -25,7 +25,16 @@
     - name: execute remote upgrade to 22
       script: /home/aptive/remote_upgrade_project/script_files/focal_upgrade.sh
       - name: bash script
-   - name: copy tainum cyber security zip file 
+    - name: Reboot machine
+      ansible.builtin.reboot:
+    - name: Remote Upgrade to 20
+      ansible.builtin.shell:
+      cmd: sudo do-release-upgrade --frontend=DistUpgradeViewNonInteractive
+    - name: jammy setup
+      script: /home/aptive/remote_upgrade_project/script_files/jammy_setup.sh
+    - name: wifi fix
+      script: /home/aptive/remote_upgrade_project/script_files/wifi_fix.sh
+  #- name: copy tainum cyber security zip file 
   #   ansible.builtin.copy:
   #     src: /home/aptive/remote_upgrade_project/scripts_files/security_packages/taniumclient_7.4.10.1075-ubuntu22_arm64.deb
   #     dest: /home/szbaijie/
@@ -42,8 +51,3 @@
   #     mode: '0644'
   #   - name: setup falcon file
     # - name: wifi fix
-    #   script: /home/aptive/remote_upgrade_project/script_files/focal_upgrade.sh
-    #   - name: bash script
-    # - name: install cyber security files
-    #   script: /home/aptive/remote_upgrade_project/script_files/focal_upgrade.sh
-    #   - name: bash script  

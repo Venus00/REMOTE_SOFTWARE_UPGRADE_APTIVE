@@ -1,15 +1,10 @@
 #!/bin/bash
-
+sudo rm /var/lib/apt/lists/lock
+sudo rm /var/cache/apt/archives/lock
+sudo rm /var/lib/dpkg/lock*
+sudo dpkg --configure -a
 sudo apt update
-sudo apt upgrade
-sudo apt dist-upgrade 
-sudo apt autoremove
+sudo apt upgrade -y
+sudo apt dist-upgrade -y
+sudo apt autoremove -y
 sudo do-release-upgrade
-sudo rm /var/lib/dpkg/info/usrmerge.* 
-sudo apt-get -f install
-sudo apt update
-sudo apt upgrade
-sudo apt dist-upgrade
-sudo apt autoremove
-
-
