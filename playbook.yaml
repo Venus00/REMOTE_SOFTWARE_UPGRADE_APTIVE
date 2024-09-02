@@ -21,7 +21,7 @@
       ansible.builtin.reboot:
     - name: Remote Upgrade to 20
       ansible.builtin.shell:
-      cmd: sudo do-release-upgrade --frontend=DistUpgradeViewNonInteractive
+      cmd: sudo do-release-upgrade -f DistUpgradeViewNonInteractive
     - name: execute remote upgrade to 22
       script: /home/aptive/remote_upgrade_project/script_files/focal_upgrade.sh
       - name: bash script
@@ -29,7 +29,7 @@
       ansible.builtin.reboot:
     - name: Remote Upgrade to 20
       ansible.builtin.shell:
-      cmd: sudo do-release-upgrade --frontend=DistUpgradeViewNonInteractive
+      cmd: sudo do-release-upgrade -f DistUpgradeViewNonInteractive
     - name: jammy setup
       script: /home/aptive/remote_upgrade_project/script_files/jammy_setup.sh
     - name: wifi fix
