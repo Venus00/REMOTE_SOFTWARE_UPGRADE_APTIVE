@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#ip manual first
 sudo apt update
 sudo apt upgrade -y
 sudo apt dist-upgrade
