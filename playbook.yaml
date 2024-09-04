@@ -58,9 +58,10 @@
     #   shell: sudo rm /var/cache/debconf/*.dat 
     #   ignore_errors: true
     # - name : update & upgrade 
-    #   apt:
-    #       upgrade: yes
-    #       update_cache: yes
+    #   apt:7
+
+
+    
     # - name: sudo apt dist-upgrade
     #   shell: sudo apt dist-upgrade
     # - name: sudo apt autoremove
@@ -86,7 +87,7 @@
       fail:
         msg: "Upgrade failed. Check logs for details."
       when: "'No new release found' not in upgrade_log.stdout"
-      
+
     # - name: Remote Upgrade to 22
     #   expect: 
     #     command: do-release-upgrade  
