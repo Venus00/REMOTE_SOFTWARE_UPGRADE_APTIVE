@@ -2,74 +2,74 @@
   hosts: ihm
   become: yes
   tasks:
-    # - name: setup source list file 
-    #   ansible.builtin.copy:
-    #     src: /home/aptive/remote_upgrade_project/scripts_files/sources.list
-    #     dest: /etc/apt/
-    #     owner: szbaijie
-    #     group: szbaijie
-    #     mode: '0644'
-    # - name: setup meta-release file 
-    #   ansible.builtin.copy:
-    #     src: /home/aptive/remote_upgrade_project/scripts_files/meta-release
-    #     dest: /etc/update-manager
-    #     owner: szbaijie
-    #     group: szbaijie
-    #     mode: '0644'
-    # - name : sudo rm /var/lib/apt/lists/lock
-    #   shell: sudo rm /var/lib/apt/lists/lock
-    #   ignore_errors: true
-    # - name : sudo rm /var/cache/apt/archives/lock
-    #   shell: sudo rm /var/cache/apt/archives/lock
-    #   ignore_errors: true
-    # - name : sudo rm /var/lib/dpkg/lock*
-    #   shell: sudo rm /var/lib/dpkg/lock*
-    #   ignore_errors: true
-    # - name : sudo rm /var/cache/debconf/*.dat 
-    #   shell: sudo rm /var/cache/debconf/*.dat 
-    #   ignore_errors: true
-    # - name : update & upgrade 
-    #   apt:
-    #       upgrade: yes
-    #       update_cache: yes
-    # - name: sudo apt dist-upgrade
-    #   shell: sudo apt dist-upgrade
-    # - name: sudo apt autoremove
-    #   shell: sudo apt autoremove
-    # - name: sudo apt install update-manager-core
-    #   shell: sudo apt install update-manager-core
-    # - name: Reboot machine
-    #   ansible.builtin.reboot:
-    # - name: Remote Upgrade to 20
-    #   shell: do-release-upgrade -f DistUpgradeViewNonInteractive
+    - name: setup source list file 
+      ansible.builtin.copy:
+        src: /home/aptive/remote_upgrade_project/scripts_files/sources.list
+        dest: /etc/apt/
+        owner: szbaijie
+        group: szbaijie
+        mode: '0644'
+    - name: setup meta-release file 
+      ansible.builtin.copy:
+        src: /home/aptive/remote_upgrade_project/scripts_files/meta-release
+        dest: /etc/update-manager
+        owner: szbaijie
+        group: szbaijie
+        mode: '0644'
+    - name : sudo rm /var/lib/apt/lists/lock
+      shell: sudo rm /var/lib/apt/lists/lock
+      ignore_errors: true
+    - name : sudo rm /var/cache/apt/archives/lock
+      shell: sudo rm /var/cache/apt/archives/lock
+      ignore_errors: true
+    - name : sudo rm /var/lib/dpkg/lock*
+      shell: sudo rm /var/lib/dpkg/lock*
+      ignore_errors: true
+    - name : sudo rm /var/cache/debconf/*.dat 
+      shell: sudo rm /var/cache/debconf/*.dat 
+      ignore_errors: true
+    - name : update & upgrade 
+      apt:
+          upgrade: yes
+          update_cache: yes
+    - name: sudo apt dist-upgrade
+      shell: sudo apt dist-upgrade
+    - name: sudo apt autoremove
+      shell: sudo apt autoremove
+    - name: sudo apt install update-manager-core
+      shell: sudo apt install update-manager-core
+    - name: Reboot machine
+      ansible.builtin.reboot:
+    - name: Remote Upgrade to 20
+      shell: do-release-upgrade -f DistUpgradeViewNonInteractive
 
-    # - name: Reboot machine
-    #   ansible.builtin.reboot:
-    # - name : sudo rm /var/lib/apt/lists/lock
-    #   shell: sudo rm /var/lib/apt/lists/lock
-    #   ignore_errors: true
-    # - name : sudo rm /var/cache/apt/archives/lock
-    #   shell: sudo rm /var/cache/apt/archives/lock
-    #   ignore_errors: true
-    # - name : sudo rm /var/lib/dpkg/lock*
-    #   shell: sudo rm /var/lib/dpkg/lock*
-    #   ignore_errors: true
-    # - name : sudo rm /var/cache/debconf/*.dat 
-    #   shell: sudo rm /var/cache/debconf/*.dat 
-    #   ignore_errors: true
-    # - name : update & upgrade 
-    #   apt:7
+    - name: Reboot machine
+      ansible.builtin.reboot:
+    - name : sudo rm /var/lib/apt/lists/lock
+      shell: sudo rm /var/lib/apt/lists/lock
+      ignore_errors: true
+    - name : sudo rm /var/cache/apt/archives/lock
+      shell: sudo rm /var/cache/apt/archives/lock
+      ignore_errors: true
+    - name : sudo rm /var/lib/dpkg/lock*
+      shell: sudo rm /var/lib/dpkg/lock*
+      ignore_errors: true
+    - name : sudo rm /var/cache/debconf/*.dat 
+      shell: sudo rm /var/cache/debconf/*.dat 
+      ignore_errors: true
+    - name : update & upgrade 
+      apt:7
 
 
     
-    # - name: sudo apt dist-upgrade
-    #   shell: sudo apt dist-upgrade
-    # - name: sudo apt autoremove
-    #   shell: sudo apt autoremove
-    # - name: sudo apt install update-manager-core
-    #   shell: sudo apt install update-manager-core
-    # - name: Reboot machine
-    #   ansible.builtin.reboot:
+    - name: sudo apt dist-upgrade
+      shell: sudo apt dist-upgrade
+    - name: sudo apt autoremove
+      shell: sudo apt autoremove
+    - name: sudo apt install update-manager-core
+      shell: sudo apt install update-manager-core
+    - name: Reboot machine
+      ansible.builtin.reboot:
     
     - name: Perform release upgrade
       command: do-release-upgrade -f DistUpgradeViewNonInteractive
@@ -88,31 +88,31 @@
         msg: "Upgrade failed. Check logs for details."
       when: "'No new release found' not in upgrade_log.stdout"
 
-    # - name: Remote Upgrade to 22
-    #   expect: 
-    #     command: do-release-upgrade  
-    #     timeout: 50000
-    #     register: upgrade_result
-    #     failed_when: "'Restoring original system state' in upgrade_result.stderr"
+    - name: Remote Upgrade to 22
+      expect: 
+        command: do-release-upgrade  
+        timeout: 50000
+        register: upgrade_result
+        failed_when: "'Restoring original system state' in upgrade_result.stderr"
 
-    # - name: jammy setup
-    #   script: /home/aptive/remote_upgrade_project/scripts_files/jammy_setup.sh
-    # - name: wifi fix
-    #   script: /home/aptive/remote_upgrade_project/scripts_files/wifi_fix.sh
-  #- name: copy tainum cyber security zip file 
-  #   ansible.builtin.copy:
-  #     src: /home/aptive/remote_upgrade_project/scripts_files/security_packages/taniumclient_7.4.10.1075-ubuntu22_arm64.deb
-  #     dest: /home/szbaijie/
-  #     owner: szbaijie
-  #     group: szbaijie
-  #     mode: '0644'
-  #   - name: setup tainum file
-  #  - name: copy falcon cyber security zip file 
-  #   ansible.builtin.copy:
-  #     src: /home/aptive/remote_upgrade_project/scripts_files/security_packages/falcon-sensor_7.15.0-16803_arm64.deb
-  #     dest: /home/szbaijie/
-  #     owner: szbaijie
-  #     group: szbaijie
-  #     mode: '0644'
-  #   - name: setup falcon file
-    # - name: wifi fix
+    - name: jammy setup
+      script: /home/aptive/remote_upgrade_project/scripts_files/jammy_setup.sh
+    - name: wifi fix
+      script: /home/aptive/remote_upgrade_project/scripts_files/wifi_fix.sh
+  - name: copy tainum cyber security zip file 
+    ansible.builtin.copy:
+      src: /home/aptive/remote_upgrade_project/scripts_files/security_packages/taniumclient_7.4.10.1075-ubuntu22_arm64.deb
+      dest: /home/szbaijie/
+      owner: szbaijie
+      group: szbaijie
+      mode: '0644'
+    - name: setup tainum file
+   - name: copy falcon cyber security zip file 
+    ansible.builtin.copy:
+      src: /home/aptive/remote_upgrade_project/scripts_files/security_packages/falcon-sensor_7.15.0-16803_arm64.deb
+      dest: /home/szbaijie/
+      owner: szbaijie
+      group: szbaijie
+      mode: '0644'
+    - name: setup falcon file
+    - name: wifi fix
