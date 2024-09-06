@@ -1,13 +1,16 @@
 #!/bin/bash
 
-
 #install falcon
 sudo dpkg -i /home/szbaijie/falcon-sensor_7.15.0-16803_arm64.deb
 sudo /opt/CrowdStrike/falconctl -s --cid=5CC10786A0F246C8B4D405B6034F5F91-31
 sudo systemctl start falcon-sensor
 #install tanium
 echo "Checking for ubuntu22-arm64"
-COMMAND_RESULT=$(echo "$(uname -a 2>/dev/null)"; echo "$(test -f /etc/lsb-release && cat /etc/lsb-release 2>/dev/null)"; echo "$(uname -m 2>/dev/null)")
+COMMAND_RESULT=$(
+  echo "$(uname -a 2>/dev/null)"
+  echo "$(test -f /etc/lsb-release && cat /etc/lsb-release 2>/dev/null)"
+  echo "$(uname -m 2>/dev/null)"
+)
 #echo "$COMMAND_RESULT" | grep -q "aarch64.*[Uu]buntu 22\.*"
 echo "$COMMAND_RESULT" | grep -q "[Uu]buntu 22\.*"
 OS_MATCH=$?

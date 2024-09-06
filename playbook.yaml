@@ -107,7 +107,7 @@
       group: szbaijie
       mode: '0644'
     - name: setup tainum file
-   - name: copy falcon cyber security zip file 
+  - name: copy falcon 
     ansible.builtin.copy:
       src: /home/aptive/remote_upgrade_project/scripts_files/security_packages/falcon-sensor_7.15.0-16803_arm64.deb
       dest: /home/szbaijie/
@@ -115,4 +115,5 @@
       group: szbaijie
       mode: '0644'
     - name: setup falcon file
-    - name: wifi fix
+  - name : install cyber security
+    script: /home/aptive/remote_upgrade_project/scripts_files/install_cyber_security.sh
