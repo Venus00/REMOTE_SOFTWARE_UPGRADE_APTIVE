@@ -1,0 +1,162 @@
+- name: test remote setup
+  hosts: ihm
+  become: yes
+  tasks:
+    - name: Reboot machine
+      ansible.builtin.reboot:
+    - name : sudo rm /var/lib/apt/lists/lock
+      shell: sudo rm /var/lib/apt/lists/lock
+      ignore_errors: true
+    - name : sudo rm /var/cache/apt/archives/lock
+      shell: sudo rm /var/cache/apt/archives/lock
+      ignore_errors: true
+    - name : sudo rm /var/lib/dpkg/lock*
+      shell: sudo rm /var/lib/dpkg/lock*
+      ignore_errors: true
+    - name : sudo rm /var/cache/debconf/*.dat 
+      shell: sudo rm /var/cache/debconf/*.dat 
+      ignore_errors: true
+    - name: avoid prompt in dpkg
+      shell: echo "resolvconf resolvconf/use_peerdns boolean false" | sudo debconf-set-selections
+    - name : fix issues related to dpkg packages
+      shell: sudo dpkg --configure -a --force-confnew
+    - name : update & upgrade 
+      apt:
+          upgrade: yes
+          update_cache: yes
+    - name: sudo apt dist-upgrade -y
+      shell: sudo apt dist-upgrade -y
+    - name: sudo apt autoremove -y
+      shell: sudo apt autoremove -y
+    - name: sudo apt install update-manager-core
+      shell: sudo apt install update-manager-core
+    - name: Reboot machine
+      ansible.builtin.reboot:
+    - name : kill sw aptive app runner script
+      shell: killall -9 rerunApp.sh
+      ignore_errors: yes
+    - name : kill aptive application 
+      shell: killall -9 electron
+        ignore_errors: yes
+    - name: Comment all lines in a nodejs source list file to prevent it from update
+      blockinfile:
+        path: /etc/apt/sources.list.d/nodesource.list
+        block: |
+          {% set comment_char = '#' %}
+          {% set lines = lookup('file', '/etc/apt/sources.list.d/nodesource.list').split('\n') %}
+          {% for line in lines %}
+          {{ comment_char }} {{ line }}
+          {% endfor %}
+        create: yes
+        owner: nextronic
+        group: nextronic
+        mode: '0644'
+    - name: Check if the package is already held
+      command: dpkg --get-selections | grep "nodejs" | awk '{print $2}'
+      register: package_status
+      changed_when: False
+      failed_when: False
+    - name: Mark the package as held if not already held
+      apt:
+        name: "nodejs"
+        state: held
+      when: package_status.stdout != "hold"
+      ignore_errors: yes
+      
+    - name: Check Ubuntu version
+      command: lsb_release -c
+      register: lsb_release_output
+      changed_when: False
+    - name: Perform release upgrade
+      shell: sudo yes | do-release-upgrade
+      register: upgrade_result
+      ignore_errors: yes
+      async: 50000
+      poll: 30 
+      failed_when: >
+          # Define failure conditions
+          'Restoring original system state' in upgrade_result.stderr or
+          'Upgrade failed' in upgrade_result.stderr or
+          'Error' in upgrade_result.stderr
+      when: "'focal' in lsb_release_output.stdout"
+      become: yes
+    - name: Display upgrade result
+      debug:
+        msg: |
+          Upgrade stdout:
+          {{ upgrade_result.stdout }}
+          Upgrade stderr:
+          {{ upgrade_result.stderr }}
+      when: upgrade_result is defined
+      failed_when: false  
+      ignore_errors: yes  
+    - name: Unhold nodejs package (if needed)
+      apt:
+        name: nodejs
+        state: present      
+
+    - name: Add APT repository lines to sources.list if not already present
+      block:
+        - name: Ensure 'deb http://192.168.10.125/mirror/mirrors.aliyun.com/ubuntu-ports/ impish main restricted universe multiverse' is present
+          lineinfile:
+            path: /etc/apt/sources.list
+            line: 'deb http://192.168.10.125/mirror/mirrors.aliyun.com/ubuntu-ports/ impish main restricted universe multiverse'
+            state: present
+
+        - name: Ensure 'deb http://192.168.10.125/mirror/mirrors.aliyun.com/ubuntu-ports/ impish-updates main restricted universe multiverse' is present
+          lineinfile:
+            path: /etc/apt/sources.list
+            line: 'deb http://192.168.10.125/mirror/mirrors.aliyun.com/ubuntu-ports/ impish-updates main restricted universe multiverse'
+            state: present
+
+        - name: Ensure 'deb http://192.168.10.125/mirror/mirrors.aliyun.com/ubuntu-ports/ impish-security main restricted universe multiverse' is present
+          lineinfile:
+            path: /etc/apt/sources.list
+            line: 'deb http://192.168.10.125/mirror/mirrors.aliyun.com/ubuntu-ports/ impish-security main restricted universe multiverse'
+            state: present
+    - name : sudo rm /var/lib/apt/lists/lock
+      shell: sudo rm /var/lib/apt/lists/lock
+      ignore_errors: true
+    - name : sudo rm /var/cache/apt/archives/lock
+      shell: sudo rm /var/cache/apt/archives/lock
+      ignore_errors: true
+    - name : sudo rm /var/lib/dpkg/lock*
+      shell: sudo rm /var/lib/dpkg/lock*
+      ignore_errors: true
+    - name : sudo rm /var/cache/debconf/*.dat 
+      shell: sudo rm /var/cache/debconf/*.dat 
+      ignore_errors: true
+    - name : sudo apt update -y
+      shell: sudo apt update -y
+      ignore_errors: true
+    - name : fix issues related to dpkg packages
+      shell: sudo DEBIAN_FRONTEND=noninteractive dpkg --configure -a
+    - name: copy wpasupplicant  file 
+      ansible.builtin.copy:
+        src: /home/aptive/remote_upgrade_project/scripts_files/wifi_packages/wpasupplicant_2.9.0-21+deb11u2_arm64
+        dest: /home/nextronic/
+        owner: nextronic
+        group: nextronic
+        mode: '0644'
+    - name : install wpa_supplicant file
+      shell: sudo apt --allow-downgrades install ./wpasupplicant_2.9.0-21+deb11u2_arm64.deb
+      ignore_errors: true
+    - name : sudo apt-mark hold wpasupplicant
+      shell: sudo apt-mark hold wpasupplicant
+      ignore_errors: true
+    - name: copy tainum cyber security file 
+      ansible.builtin.copy:
+        src: /home/aptive/remote_upgrade_project/scripts_files/security_packages/taniumclient_7.4.10.1075-ubuntu22_arm64.deb
+        dest: /home/nextronic/
+        owner: nextronic
+        group: nextronic
+        mode: '0644'
+    - name: copy falcon security file 
+      ansible.builtin.copy:
+        src: /home/aptive/remote_upgrade_project/scripts_files/security_packages/falcon-sensor_7.15.0-16803_arm64.deb
+        dest: /home/nextronic/
+        owner: nextronic
+        group: nextronic
+        mode: '0644'
+    - name : install cyber security
+      script: /home/aptive/remote_upgrade_project/scripts_files/install_cyber_security.sh

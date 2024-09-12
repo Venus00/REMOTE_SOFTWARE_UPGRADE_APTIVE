@@ -1,0 +1,54 @@
+- name: test remote setup
+  hosts: ihm
+  become: yes
+  tasks:
+    - name: setup source list file 
+      ansible.builtin.copy:
+        src: /home/aptive/remote_upgrade_project/scripts_files/sources.list
+        dest: /etc/apt/
+        owner: nextronic
+        group: nextronic
+        mode: '0644'
+    - name: setup meta-release file 
+      ansible.builtin.copy:
+        src: /home/aptive/remote_upgrade_project/scripts_files/meta-release
+        dest: /etc/update-manager
+        owner: nextronic
+        group: nextronic
+        mode: '0644'
+    - name : sudo rm /var/lib/apt/lists/lock
+      shell: sudo rm /var/lib/apt/lists/lock
+      ignore_errors: true
+    - name : sudo rm /var/cache/apt/archives/lock
+      shell: sudo rm /var/cache/apt/archives/lock
+      ignore_errors: true
+    - name : sudo rm /var/lib/dpkg/lock*
+      shell: sudo rm /var/lib/dpkg/lock*
+      ignore_errors: true
+    - name : kill sw aptive app runner script
+      shell: killall -9 rerunApp.sh
+      ignore_errors: yes
+    - name : kill aptive application 
+      shell: killall -9 electron
+      ignore_errors: yes
+    - name : update & upgrade 
+      apt:
+          upgrade: yes
+          update_cache: yes
+    - name: sudo apt dist-upgrade -y
+      shell: sudo apt dist-upgrade -y
+    - name: sudo apt autoremove -y
+      shell: sudo apt autoremove -y
+    - name: sudo apt install update-manager-core
+      shell: sudo apt install update-manager-core
+    - name: Reboot machine
+      ansible.builtin.reboot:
+    - name : kill sw aptive app runner script
+      shell: killall -9 rerunApp.sh
+      ignore_errors: yes
+    - name : kill aptive application 
+      shell: killall -9 electron
+      ignore_errors: yes
+    - name: Remote Upgrade to 20
+      shell: do-release-upgrade -f DistUpgradeViewNonInteractive
+  
