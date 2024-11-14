@@ -5,7 +5,7 @@ import yaml
 excel_file_path = 'HMI_Plants_Totale_Installations.xlsx'
 sheet_name = 'M3'
 ip_column_name = 'Full IP Adresse'
-yaml_file_path = 'inventory_aptive_meknes/inventory_m3.yaml'
+yaml_file_path = 'inventory/inventory.yaml'
 
 
 def excel_to_yaml(excel_file, sheet, yaml_file):
