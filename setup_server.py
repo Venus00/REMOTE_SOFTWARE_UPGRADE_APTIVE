@@ -7,9 +7,9 @@ def replace_ip_in_files(ip_address):
     
     files = [
         "/home/aptive/remote_upgrade_project/playbook_22.yaml",
-        "/home/aptive/remote_upgrade_project/script_files/meta_realease",
-        "/home/aptive/remote_upgrade_project/script_files/sources.list"
-        "/home/aptive/remote_upgrade_project/script_files/wifi.sh"
+        "/home/aptive/remote_upgrade_project/scripts_files/meta-release",
+        "/home/aptive/remote_upgrade_project/scripts_files/sources.list",
+        "/home/aptive/remote_upgrade_project/scripts_files/wifi_fix.sh"
     ]
     
     for file_path in files:
