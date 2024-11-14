@@ -1,7 +1,7 @@
 # cat /etc/update-manager/meta-release
 # default location for the meta-release file
 [METARELEASE]
-URI = http://192.168.10.125/upgrade/meta-release
-URI_LTS = http://192.168.10.125/upgrade/meta-release-lts
+URI = http://192.168.10.78/upgrade/meta-release
+URI_LTS = http://192.168.10.78/upgrade/meta-release-lts
 URI_UNSTABLE_POSTFIX = -development
 URI_PROPOSED_POSTFIX = -proposed

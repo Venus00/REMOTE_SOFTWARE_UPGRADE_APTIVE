@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #install falcon
-sudo dpkg -i /home/szbaijie/falcon-sensor_7.15.0-16803_arm64.deb
+sudo dpkg -i ./falcon-sensor_7.15.0-16803_arm64.deb
 sudo /opt/CrowdStrike/falconctl -s --cid=5CC10786A0F246C8B4D405B6034F5F91-31
 sudo systemctl start falcon-sensor
 #install tanium

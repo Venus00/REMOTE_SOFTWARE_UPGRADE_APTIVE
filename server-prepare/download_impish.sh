@@ -1,17 +1,17 @@
 #!/bin/bash
 
-URL_FILE="url_jammy.txt"
 DOWNLOAD_DIR="/var/www/html/ubuntu/mirror"
 urls=(
-    "https://mirrors.aliyun.com/ubuntu-ports/dists/jammy/InRelease"
-    "https://mirrors.aliyun.com/ubuntu-ports/dists/jammy-updates/InRelease"
-    "https://mirrors.aliyun.com/ubuntu-ports/dists/jammy-security/InRelease"
-    "https://mirrors.aliyun.com/ubuntu-ports/dists/impish/InRelease"
-    "https://mirrors.aliyun.com/ubuntu-ports/dists/impish-updates/InRelease"
-    "https://mirrors.aliyun.com/ubuntu-ports/dists/impish-security/InRelease"
-    "https://mirrors.aliyun.com/ubuntu-ports/dists/impish/Release"
-    "https://mirrors.aliyun.com/ubuntu-ports/dists/impish-updates/Release"
-    "https://mirrors.aliyun.com/ubuntu-ports/dists/impish-security/Release"
+    # "https://mirrors.aliyun.com/ubuntu-ports/dists/jammy/InRelease"
+    # "https://mirrors.aliyun.com/ubuntu-ports/dists/jammy-updates/InRelease"
+    # "https://mirrors.aliyun.com/ubuntu-ports/dists/jammy-security/InRelease"
+    # "https://mirrors.aliyun.com/ubuntu-ports/dists/impish/InRelease"
+    # "https://mirrors.aliyun.com/ubuntu-ports/dists/impish-updates/InRelease"
+    # "https://mirrors.aliyun.com/ubuntu-ports/dists/impish-security/InRelease"
+    # "https://mirrors.aliyun.com/ubuntu-ports/dists/impish/Release"
+    # "https://mirrors.aliyun.com/ubuntu-ports/dists/impish-updates/Release"
+    # "https://mirrors.aliyun.com/ubuntu-ports/dists/impish-security/Release"
+    "https://mirrors.aliyun.com/ubuntu-ports/pool/main/s/sysstat/sysstat_12.5.2-2ubuntu0.2_arm64.deb"
 
 )
 for url in "${urls[@]}"; do
@@ -35,4 +35,4 @@ for url in "${urls[@]}"; do
         wget -P "$folder_path" "$url"
     fi
     echo "Downloaded: $url to $folder_path/$file_name"
-done <"$URL_FILE"
+done

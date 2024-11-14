@@ -34,6 +34,7 @@
     - name : update & upgrade 
       apt:
           upgrade: yes
+          clean: yes
           update_cache: yes
     - name: sudo apt dist-upgrade -y
       shell: sudo apt dist-upgrade -y
@@ -48,7 +49,25 @@
       ignore_errors: yes
     - name : kill aptive application 
       shell: killall -9 electron
+    - name: Remove output.zip
+      ansible.builtin.file:
+        path: /home/nextronic/output.zip
+        state: absent
+    - name: Remove unessary logs pm2
+      ansible.builtin.file:
+        path: /home/nextronic/.pm2/logs/*
+        state: absent
+    - name: Remove unessary cache
+      ansible.builtin.file:
+        path: /home/nextronic/.cache/*
+        state: absent
+    - name: Remove unessary logs
+      ansible.builtin.file:
+        path: /var/log/*
+        state: absent
       ignore_errors: yes
-    - name: Remote Upgrade to 20
-      shell: do-release-upgrade -f DistUpgradeViewNonInteractive
+    - name: Perform release upgrade
+      shell: sudo yes | do-release-upgrade
+    # - name: Remote Upgrade to 20
+    #   shell: do-release-upgrade -f DistUpgradeViewNonInteractive
   
