@@ -96,22 +96,22 @@
         state: present      
     # - name: Add APT repository lines to sources.list if not already present
     #   block:
-    #     - name: Ensure 'deb http://192.168.10.151/mirror/mirrors.aliyun.com/ubuntu-ports/ impish main restricted universe multiverse' is present
+    #     - name: Ensure 'deb http://192.168.1.23/mirror/mirrors.aliyun.com/ubuntu-ports/ impish main restricted universe multiverse' is present
     #       lineinfile:
     #         path: /etc/apt/sources.list
-    #         line: 'deb http://192.168.10.151/mirror/mirrors.aliyun.com/ubuntu-ports/ impish main restricted universe multiverse'
+    #         line: 'deb http://192.168.1.23/mirror/mirrors.aliyun.com/ubuntu-ports/ impish main restricted universe multiverse'
     #         state: present
 
-    #     - name: Ensure 'deb http://192.168.10.151/mirror/mirrors.aliyun.com/ubuntu-ports/ impish-updates main restricted universe multiverse' is present
+    #     - name: Ensure 'deb http://192.168.1.23/mirror/mirrors.aliyun.com/ubuntu-ports/ impish-updates main restricted universe multiverse' is present
     #       lineinfile:
     #         path: /etc/apt/sources.list
-    #         line: 'deb http://192.168.10.151/mirror/mirrors.aliyun.com/ubuntu-ports/ impish-updates main restricted universe multiverse'
+    #         line: 'deb http://192.168.1.23/mirror/mirrors.aliyun.com/ubuntu-ports/ impish-updates main restricted universe multiverse'
     #         state: present
 
-    #     - name: Ensure 'deb http://192.168.10.151/mirror/mirrors.aliyun.com/ubuntu-ports/ impish-security main restricted universe multiverse' is present
+    #     - name: Ensure 'deb http://192.168.1.23/mirror/mirrors.aliyun.com/ubuntu-ports/ impish-security main restricted universe multiverse' is present
     #       lineinfile:
     #         path: /etc/apt/sources.list
-    #         line: 'deb http://192.168.10.151/mirror/mirrors.aliyun.com/ubuntu-ports/ impish-security main restricted universe multiverse'
+    #         line: 'deb http://192.168.1.23/mirror/mirrors.aliyun.com/ubuntu-ports/ impish-security main restricted universe multiverse'
     #         state: present
     - name : sudo rm /var/lib/apt/lists/lock
       shell: sudo rm /var/lib/apt/lists/lock

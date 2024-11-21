@@ -1,5 +1,9 @@
 all:
   hosts:
+    ihm200:
+      ansible_host: 192.168.1.20
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
     ihm0:
       ansible_host: 10.235.207.254
       ansible_password: 2899100*-+

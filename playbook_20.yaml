@@ -36,6 +36,7 @@
           upgrade: yes
           clean: yes
           update_cache: yes
+      ignore_errors: yes
     - name: sudo apt dist-upgrade -y
       shell: sudo apt dist-upgrade -y
     - name: sudo apt autoremove -y
