@@ -50,6 +50,7 @@
       ignore_errors: yes
     - name : kill aptive application 
       shell: killall -9 electron
+      ignore_errors: yes
     - name: Remove output.zip
       ansible.builtin.file:
         path: /home/nextronic/output.zip
