@@ -8,6 +8,8 @@ def replace_ip_in_files(ip_address):
     files = [
         "/home/aptive/remote_upgrade_project/playbook_22.yaml",
         "/home/aptive/remote_upgrade_project/scripts_files/meta-release",
+        "/var/www/html/ubuntu/upgrade/meta-release",
+        "/var/www/html/ubuntu/upgrade/meta-release-lts",
         "/home/aptive/remote_upgrade_project/scripts_files/sources.list",
         "/home/aptive/remote_upgrade_project/scripts_files/wifi_fix.sh"
     ]
