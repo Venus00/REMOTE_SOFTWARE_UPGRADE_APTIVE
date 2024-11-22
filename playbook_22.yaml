@@ -19,11 +19,12 @@
     - name: avoid prompt in dpkg
       shell: echo "resolvconf resolvconf/use_peerdns boolean false" | sudo debconf-set-selections
     - name : fix issues related to dpkg packages
-      shell: sudo dpkg --configure -a --force-confnew
+      shell: yes | sudo dpkg --configure -a --force-confold
     - name : update & upgrade 
       apt:
           upgrade: yes
           update_cache: yes
+      ignore_errors: yes
     - name: sudo apt dist-upgrade -y
       shell: sudo apt dist-upgrade -y
     - name: sudo apt autoremove -y
