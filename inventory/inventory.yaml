@@ -1,0 +1,11 @@
+ihm:
+  hosts:
+    ihm1:
+      ansible_host: 10.121.29.149
+      ansible_user: nextronic
+      ansible_password: 2899100*-+
+    ihm2:
+      ansible_host: 10.121.29.16
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+  vars: {}  

@@ -1,0 +1,739 @@
+all:
+  hosts:
+    ihm200:
+      ansible_host: 192.168.1.20
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm0:
+      ansible_host: 10.235.207.254
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm1:
+      ansible_host: 10.235.207.253
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm10:
+      ansible_host: 10.235.207.243
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm100:
+      ansible_host: 10.235.207.215
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm101:
+      ansible_host: 10.235.207.205
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm102:
+      ansible_host: 10.235.207.206
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm103:
+      ansible_host: 10.235.207.174
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm104:
+      ansible_host: 10.235.207.175
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm105:
+      ansible_host: 10.235.207.176
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm106:
+      ansible_host: 10.235.207.185
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm107:
+      ansible_host: 10.235.207.186
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm108:
+      ansible_host: 10.235.207.216
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm109:
+      ansible_host: 10.235.207.189
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm11:
+      ansible_host: 10.235.207.251
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm110:
+      ansible_host: 10.235.207.191
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm111:
+      ansible_host: 10.235.207.192
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm112:
+      ansible_host: 10.235.207.193
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm113:
+      ansible_host: 10.235.207.194
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm114:
+      ansible_host: 10.235.207.195
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm115:
+      ansible_host: 10.235.207.196
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm116:
+      ansible_host: 10.235.207.135
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm117:
+      ansible_host: 10.235.207.136
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm118:
+      ansible_host: 10.235.207.137
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm119:
+      ansible_host: 10.235.207.96
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm12:
+      ansible_host: 10.235.207.241
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm120:
+      ansible_host: 10.235.207.222
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm121:
+      ansible_host: 10.235.207.164
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm122:
+      ansible_host: 10.235.207.165
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm123:
+      ansible_host: 10.235.207.181
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm124:
+      ansible_host: 10.235.207.182
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm125:
+      ansible_host: 10.235.207.183
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm126:
+      ansible_host: 10.235.207.184
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm127:
+      ansible_host: 10.235.205.105
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm128:
+      ansible_host: 10.235.207.201
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm129:
+      ansible_host: 10.235.207.202
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm13:
+      ansible_host: 10.235.207.219
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm130:
+      ansible_host: 10.235.207.166
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm131:
+      ansible_host: 10.235.207.167
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm132:
+      ansible_host: 10.235.207.160
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm133:
+      ansible_host: 10.235.207.161
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm134:
+      ansible_host: 10.235.207.162
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm135:
+      ansible_host: 10.235.207.163
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm136:
+      ansible_host: 10.235.207.177
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm137:
+      ansible_host: 10.235.207.178
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm138:
+      ansible_host: 10.235.207.159
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm139:
+      ansible_host: 10.235.207.158
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm14:
+      ansible_host: 10.235.207.220
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm140:
+      ansible_host: 10.235.207.179
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm141:
+      ansible_host: 10.235.207.180
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm142:
+      ansible_host: 10.235.207.129
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm143:
+      ansible_host: 10.235.207.130
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm144:
+      ansible_host: 10.235.207.150
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm145:
+      ansible_host: 10.235.207.151
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm146:
+      ansible_host: 10.235.207.95
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm147:
+      ansible_host: 10.235.207.249
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm148:
+      ansible_host: 10.235.207.230
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm149:
+      ansible_host: 10.235.207.231
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm15:
+      ansible_host: 10.235.207.214
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm150:
+      ansible_host: 10.235.207.203
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm151:
+      ansible_host: 10.235.207.204
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm152:
+      ansible_host: 10.235.207.168
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm153:
+      ansible_host: 10.235.207.169
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm154:
+      ansible_host: 10.235.207.170
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm155:
+      ansible_host: 10.235.207.173
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm156:
+      ansible_host: 10.235.207.172
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm157:
+      ansible_host: 10.235.205.93
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm158:
+      ansible_host: 10.235.205.100
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm159:
+      ansible_host: 10.235.205.101
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm16:
+      ansible_host: 10.235.207.211
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm160:
+      ansible_host: 10.235.207.157
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm161:
+      ansible_host: 10.235.207.156
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm162:
+      ansible_host: 10.235.207.248
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm163:
+      ansible_host: 10.235.207.233
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm164:
+      ansible_host: 10.253.207.221
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm165:
+      ansible_host: 10.235.206.246
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm166:
+      ansible_host: 10.235.206.247
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm167:
+      ansible_host: 10.235.206.248
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm168:
+      ansible_host: 10.235.206.253
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm169:
+      ansible_host: 10.235.206.254
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm17:
+      ansible_host: 10.235.207.213
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm170:
+      ansible_host: 10.235.206.231
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm171:
+      ansible_host: 10.235.206.250
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm172:
+      ansible_host: 10.235.206.233
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm173:
+      ansible_host: 10.235.206.243
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm174:
+      ansible_host: 10.235.206.232
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm175:
+      ansible_host: 10.235.206.227
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm176:
+      ansible_host: 10.235.206.228
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm177:
+      ansible_host: 10.235.206.229
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm178:
+      ansible_host: 10.235.206.230
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm179:
+      ansible_host: .nan
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm18:
+      ansible_host: 10.235.207.218
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm180:
+      ansible_host: .nan
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm181:
+      ansible_host: .nan
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm182:
+      ansible_host: .nan
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm19:
+      ansible_host: 10.235.207.217
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm2:
+      ansible_host: 10.235.207.250
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm20:
+      ansible_host: 10.235.207.247
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm21:
+      ansible_host: 10.235.207.100
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm22:
+      ansible_host: 10.235.207.98
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm23:
+      ansible_host: 10.235.207.246
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm24:
+      ansible_host: 10.235.207.234
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm25:
+      ansible_host: 10.235.207.245
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm26:
+      ansible_host: 10.235.207.244
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm27:
+      ansible_host: 10.235.207.228
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm28:
+      ansible_host: 10.235.207.227
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm29:
+      ansible_host: 10.235.207.229
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm3:
+      ansible_host: 10.235.207.237
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm30:
+      ansible_host: 10.235.207.223
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm31:
+      ansible_host: 10.235.207.225
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm32:
+      ansible_host: 10.235.207.224
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm33:
+      ansible_host: 10.235.207.226
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm34:
+      ansible_host: 10.235.207.211
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm35:
+      ansible_host: 10.235.207.212
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm36:
+      ansible_host: 10.235.207.99
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm37:
+      ansible_host: 10.235.207.210
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm38:
+      ansible_host: 10.235.207.207
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm39:
+      ansible_host: 10.235.207.209
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm4:
+      ansible_host: 10.235.207.235
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm40:
+      ansible_host: 10.235.207.208
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm41:
+      ansible_host: 10.235.207.104
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm42:
+      ansible_host: 10.235.207.103
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm43:
+      ansible_host: 10.235.207.107
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm44:
+      ansible_host: 10.235.204.6
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm45:
+      ansible_host: 10.235.207.106
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm46:
+      ansible_host: 10.235.207.105
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm47:
+      ansible_host: 10.235.205.250
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm48:
+      ansible_host: 10.235.205.251
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm49:
+      ansible_host: 10.235.205.252
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm5:
+      ansible_host: 10.235.207.242
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm50:
+      ansible_host: 10.235.205.253
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm51:
+      ansible_host: 10.235.205.254
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm52:
+      ansible_host: 10.235.205.255
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm53:
+      ansible_host: 10.235.207.128
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm54:
+      ansible_host: 10.235.207.108
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm55:
+      ansible_host: 10.235.207.109
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm56:
+      ansible_host: 10.235.207.110
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm57:
+      ansible_host: 10.235.207.111
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm58:
+      ansible_host: 10.235.207.66
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm59:
+      ansible_host: 10.235.207.63
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm6:
+      ansible_host: 10.235.207.252
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm60:
+      ansible_host: 10.235.207.125
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm61:
+      ansible_host: 10.235.207.64
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm62:
+      ansible_host: 10.235.207.65
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm63:
+      ansible_host: 10.235.204.7
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm64:
+      ansible_host: 10.235.207.97
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm65:
+      ansible_host: 10.235.207.117
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm66:
+      ansible_host: 10.235.207.120
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm67:
+      ansible_host: 10.235.207.121
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm68:
+      ansible_host: 10.235.207.122
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm69:
+      ansible_host: 10.235.207.123
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm7:
+      ansible_host: 10.235.207.239
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm70:
+      ansible_host: 10.235.207.124
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm71:
+      ansible_host: 10.235.207.115
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm72:
+      ansible_host: 10.235.207.116
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm73:
+      ansible_host: 10.235.207.118
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm74:
+      ansible_host: 10.235.207.119
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm75:
+      ansible_host: 10.235.207.102
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm76:
+      ansible_host: 10.235.207.62
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm77:
+      ansible_host: 10.235.207.67
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm78:
+      ansible_host: 10.235.207.68
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm79:
+      ansible_host: 10.235.207.240
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm8:
+      ansible_host: 10.235.207.238
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm80:
+      ansible_host: 10.235.207.140
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm81:
+      ansible_host: 10.235.207.148
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm82:
+      ansible_host: 10.235.207.149
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm83:
+      ansible_host: 10.235.207.141
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm84:
+      ansible_host: 10.235.207.142
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm85:
+      ansible_host: 10.235.207.143
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm86:
+      ansible_host: 10.235.207.144
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm87:
+      ansible_host: 10.235.207.145
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm88:
+      ansible_host: 10.235.207.146
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm89:
+      ansible_host: 10.235.207.147
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm9:
+      ansible_host: 10.235.207.236
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm90:
+      ansible_host: 10.235.205.69
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm91:
+      ansible_host: 10.235.207.199
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm92:
+      ansible_host: 10.235.207.200
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm93:
+      ansible_host: 10.235.207.131
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm94:
+      ansible_host: 10.235.207.132
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm95:
+      ansible_host: 10.235.207.133
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm96:
+      ansible_host: 10.235.207.134
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm97:
+      ansible_host: 10.235.207.232
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm98:
+      ansible_host: 10.235.207.187
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+    ihm99:
+      ansible_host: 10.235.207.188
+      ansible_password: 2899100*-+
+      ansible_user: nextronic
+  vars: {}

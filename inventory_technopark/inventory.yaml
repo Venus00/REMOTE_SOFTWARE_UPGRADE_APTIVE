@@ -1,0 +1,9 @@
+ihm:
+  hosts:
+    ihm:
+      # ansible_host: 192.168.10.84
+      # ansible_user: szbaijie
+      # ansible_password: szbaijie
+      ansible_host: 192.168.10.51
+      ansible_user: nextronic
+      ansible_password: 2899100*-+

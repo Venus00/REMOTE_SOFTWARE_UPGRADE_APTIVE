@@ -1,0 +1,18 @@
+deb http://10.121.29.107/mirror/mirrors.aliyun.com/ubuntu-ports/ bionic main restricted
+# deb-src http://10.121.29.107/mirror/mirrors.aliyun.com/ubuntu-ports/ bionic main restricted
+deb http://10.121.29.107/mirror/mirrors.aliyun.com/ubuntu-ports/ bionic-updates main restricted
+# deb-src http://10.121.29.107/mirror/mirrors.aliyun.com/ubuntu-ports/ bionic-updates main restricted
+deb http://10.121.29.107/mirror/mirrors.aliyun.com/ubuntu-ports/ bionic universe
+# deb-src http://10.121.29.107/mirror/mirrors.aliyun.com/ubuntu-ports/ bionic universe
+deb http://10.121.29.107/mirror/mirrors.aliyun.com/ubuntu-ports/ bionic-updates universe
+# deb-src http://10.121.29.107/mirror/mirrors.aliyun.com/ubuntu-ports/ bionic-updates universe
+deb http://10.121.29.107/mirror/mirrors.aliyun.com/ubuntu-ports/ bionic multiverse
+# deb-src http://10.121.29.107/mirror/mirrors.aliyun.com/ubuntu-ports/ bionic multiverse
+deb http://10.121.29.107/mirror/mirrors.aliyun.com/ubuntu-ports/ bionic-updates multiverse
+# deb-src http://10.121.29.107/mirror/mirrors.aliyun.com/ubuntu-ports/ bionic-updates multiverse
+deb http://10.121.29.107/mirror/mirrors.aliyun.com/ubuntu-ports/ bionic-security main restricted
+# deb-src http://10.121.29.107/mirror/mirrors.aliyun.com/ubuntu-ports/ bionic-security main restricted
+deb http://10.121.29.107/mirror/mirrors.aliyun.com/ubuntu-ports/ bionic-security universe
+# deb-src http://10.121.29.107/mirror/mirrors.aliyun.com/ubuntu-ports/ bionic-security universe
+deb http://10.121.29.107/mirror/mirrors.aliyun.com/ubuntu-ports/ bionic-security multiverse
+# deb-src http://10.121.29.107/mirror/mirrors.aliyun.com/ubuntu-ports/ bionic-security multiverse

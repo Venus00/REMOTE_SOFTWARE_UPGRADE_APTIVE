@@ -1,0 +1,66 @@
+- name: test remote setup
+  hosts: ihm
+  become: yes
+  tasks:
+    - name : sudo rm /var/lib/apt/lists/lock
+      shell: sudo rm /var/lib/apt/lists/lock
+      ignore_errors: true
+    - name : sudo rm /var/cache/apt/archives/lock
+      shell: sudo rm /var/cache/apt/archives/lock
+      ignore_errors: true
+    - name : sudo rm /var/lib/dpkg/lock*
+      shell: sudo rm /var/lib/dpkg/lock*
+      ignore_errors: true
+    - name : sudo rm /var/cache/debconf/*.dat
+      shell: sudo rm /var/cache/debconf/*.dat
+      ignore_errors: true
+    - name : sudo apt update -y
+      shell: sudo apt update -y
+      ignore_errors: true
+    - name : update & upgrade
+      apt:
+        clean: yes
+      ignore_errors: yes
+    - name: copy wpasupplicant  file 
+      ansible.builtin.copy:
+        src: /home/aptive/remote_upgrade_project/scripts_files/wifi_packages/wpasupplicant_2.9.0-21+deb11u2_arm64.deb
+        dest: /home/nextronic/
+        owner: nextronic
+        group: nextronic
+        mode: '0644'
+    # - name : install wpa_supplicant file
+    #   shell: sudo apt --allow-downgrades install ./home/nextronic/wpasupplicant_2.9.0-21+deb11u2_arm64.deb
+    #   ignore_errors: true
+    - name: install wpa_supplicant file
+      ansible.builtin.apt:
+        deb: ./wpasupplicant_2.9.0-21+deb11u2_arm64.deb
+        allow_downgrade: true
+      ignore_errors: yes
+    - name : sudo apt-mark hold wpasupplicant
+      shell: sudo apt-mark hold wpasupplicant
+      ignore_errors: true
+    - name: copy tainum cyber security file 
+      ansible.builtin.copy:
+        src: /home/aptive/remote_upgrade_project/scripts_files/security_packages/taniumclient_7.4.10.1075-ubuntu22_arm64.deb
+        dest: /home/nextronic/
+        owner: nextronic
+        group: nextronic
+        mode: '0644'
+    - name: copy tanium  file 
+    ansible.builtin.copy:
+      src: /home/aptive/remote_upgrade_project/scripts_files/tanium-init.dats
+      dest: /home/nextronic/
+      owner: nextronic
+      group: nextronic
+      mode: '0644'
+    - name: copy falcon security file 
+      ansible.builtin.copy:
+        src: /home/aptive/remote_upgrade_project/scripts_files/security_packages/falcon-sensor_7.15.0-16803_arm64.deb
+        dest: /home/nextronic/
+        owner: nextronic
+        group: nextronic
+        mode: '0644'
+    - name : install cyber security
+      script: /home/aptive/remote_upgrade_project/scripts_files/install_cyber_security.sh
+    - name: Reboot machine
+      ansible.builtin.reboot:

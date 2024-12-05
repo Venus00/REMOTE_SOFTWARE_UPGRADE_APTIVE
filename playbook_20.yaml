@@ -1,0 +1,175 @@
+- name: test remote setup
+  hosts: ihm
+  become: yes
+  tasks:
+    - name: setup meta-release file 
+      ansible.builtin.copy:
+        src: /home/aptive/remote_upgrade_project/scripts_files/meta-release
+        dest: /etc/update-manager
+        owner: nextronic
+        group: nextronic
+        mode: '0644'
+    - name : sudo rm -rf /tmp/*
+      shell: sudo rm -rf /tmp/*
+      ignore_errors: true
+    - name : sudo rm -rf /var/log/*
+      shell: sudo rm -rf /var/log/*
+      ignore_errors: true
+    - name : sudo rm /var/lib/apt/lists/lock
+      shell: sudo rm /var/lib/apt/lists/lock
+      ignore_errors: true
+    - name : sudo rm /var/cache/apt/archives/lock
+      shell: sudo rm /var/cache/apt/archives/lock
+      ignore_errors: true
+    - name : sudo rm /var/lib/dpkg/lock*
+      shell: sudo rm /var/lib/dpkg/lock*
+      ignore_errors: true
+    - name : kill sw aptive app runner script
+      shell: killall -9 rerunApp.sh
+      ignore_errors: yes
+    - name : kill aptive application 
+      shell: killall -9 electron
+      ignore_errors: yes
+    - name : update & upgrade 
+      apt:
+          upgrade: yes
+          clean: yes
+          update_cache: yes
+      ignore_errors: yes
+    - name: run dpkg
+      shell: sudo DEBIAN_FRONTEND=noninterac-tive dpkg --configure -a 
+      ignore_errors: yes
+    - name: remove debconf cache files
+      shell: sudo rm /var/cache/debconf/*.dat 
+      ignore_errors: yes  
+    #- name: sudo apt dist-upgrade -y
+     # shell: sudo apt dist-upgrade -y
+    - name: Remove dependencies that are no longer required 
+      ansible.builtin.apt:
+        autoremove: yes
+      ignore_errors: yes
+    - name: sudo apt install update-manager-core 
+      shell: sudo apt install update-manager-core -y
+    - name: Reboot machine
+      ansible.builtin.reboot:
+    - name : kill sw aptive app runner script
+      shell: killall -9 rerunApp.sh
+      ignore_errors: yes
+    - name : kill aptive application 
+      shell: killall -9 electron
+      ignore_errors: yes
+    - name: Remove output.zip
+      ansible.builtin.file:
+        path: /home/nextronic/output.zip
+        state: absent
+      ignore_errors: yes
+    - name: Remove unessary logs pm2
+      ansible.builtin.file:
+        path: /home/nextronic/.pm2/logs/
+        state: absent
+      ignore_errors: yes
+    - name: Remove unessary logs elecron cache     
+      ansible.builtin.file:
+        path: /home/nextronic/.electron/
+        state: absent
+      ignore_errors: yes
+    - name: Remove unessary logs elecron gyp     
+      ansible.builtin.file:
+        path: /home/nextronic/.electron-gyp
+        state: absent
+      ignore_errors: yes
+    - name: Remove unessary cache
+      ansible.builtin.file:
+        path: /home/nextronic/.cache
+        state: absent
+      ignore_errors: yes
+    - name: Remove .npm logs
+      ansible.builtin.file:
+        path: /home/nextronic/.npm
+        state: absent
+      ignore_errors: yes
+    - name: Remove "firefox" package
+      ansible.builtin.apt:
+        name: firefox
+        state: absent
+      ignore_errors: yes
+    - name: Remove "chromium browser" package
+      ansible.builtin.apt:
+        name: chromium-browser
+        state: absent
+      ignore_errors: yes
+    - name: Comment all lines in a nodejs source list file to prevent it from update
+      blockinfile:
+        path: /etc/apt/sources.list.d/nodesource.list 
+        block: |
+          {% set comment_char = '#' %}
+          {% set lines = lookup('file', '/etc/apt/sources.list.d/nodesource.list').split('\n') %}
+          {% for line in lines %}
+          {{ comment_char }} {{ line }}
+          {% endfor %}
+        create: yes
+        owner: nextronic
+        group: nextronic
+        mode: '0644'
+      ignore_errors: yes 
+    - name: comment all lines in node source file 
+      shell: sed -i 's/^/#/'  /etc/apt/sources.list.d/nodesource.list
+      ignore_errors: yes
+    - name: comment all lines in node source dist upgrade file 
+      shell: sed -i 's/^/#/' /etc/apt/sources.list.d/nodesource.list.distUpgrade
+      ignore_errors: yes 
+    - name: Check if the package is already held
+      command: dpkg --get-selections | grep "nodejs" | awk '{print $2}'
+      register: package_status
+      changed_when: False
+      failed_when: False
+    - name: Mark the package as held if not already held
+      apt:
+        name: "nodejs"
+        state: held
+      when: package_status.stdout != "hold"
+      ignore_errors: yes  
+   # - name: Perform release upgrade
+   #   shell: sudo yes | do-release-upgrade
+    - name: Delete content & directory
+      ansible.builtin.file:
+        state: absent
+        path: /home/nextronic/nxt_rob
+    - name: Delete ansible 
+      ansible.builtin.file:
+        state: absent
+        path: /home/nextronic/.ansible
+      ignore_errors: yes  
+    - name: Delete Image
+      ansible.builtin.file:
+        state: absent
+        path: /home/nextronic/xubuntu-bionic.png
+      ignore_errors: yes  
+    - name: Check Ubuntu version
+      command: lsb_release -c
+      register: lsb_release_output
+      changed_when: false
+    - name: Perform release upgrade
+      shell: sudo yes | do-release-upgrade
+      register: upgrade_result
+      ignore_errors: yes
+      async: 5000
+      poll: 30 
+      failed_when: >
+          # Define failure conditions
+          'Restoring original system state' in upgrade_result.stderr or
+          'Upgrade failed' in upgrade_result.stderr or
+          'Error' in upgrade_result.stderr
+      when: "'bionic' in lsb_release_output.stdout"
+      become: yes
+    - name: Display upgrade result
+      debug:
+        msg: |
+          Upgrade stdout:
+          {{ upgrade_result.stdout }}
+          Upgrade stderr:
+          {{ upgrade_result.stderr }}
+      when: upgrade_result is defined
+      failed_when: false  
+      ignore_errors: yes
+  

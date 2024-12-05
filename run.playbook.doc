@@ -1,0 +1,1 @@
+ansible-playbook remote_upgrade_project/playbook.yaml -i remote_upgrade_project/inventory_technopark/inventory.yaml --ask-become-pass
